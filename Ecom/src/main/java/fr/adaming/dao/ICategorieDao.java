@@ -14,7 +14,7 @@ public interface ICategorieDao {
 	
 	public Categorie getCategorieById(Long id);
 	
-	public Categorie getCategorieByName(String Name);
+	public Categorie getCategorieByName(String name);
 	
 	public List<Categorie> getAllCategorie();
 	

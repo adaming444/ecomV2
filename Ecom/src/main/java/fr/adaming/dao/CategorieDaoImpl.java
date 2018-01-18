@@ -72,7 +72,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 	}
 
 	@Override
-	public Categorie getCategorieByName(String Name) {
+	public Categorie getCategorieByName(String name) {
 		Session s = sf.getCurrentSession();
 		// ecriture de la requete
 		String req = "FROM Categorie c WHERE c.nomCategorie=: pNomC";
@@ -81,7 +81,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		Query query = s.createQuery(req);
 
 		// Assignation des parametres
-		query.setParameter("pNomC", Name);
+		query.setParameter("pNomC", name);
 
 		// envoie et recuperation du resultat et retour
 		return (Categorie) query.uniqueResult();
