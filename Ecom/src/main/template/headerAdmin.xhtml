@@ -1,0 +1,95 @@
+<!DOCTYPE html >
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Page</title>
+
+	<h:outputStylesheet library="css" name="csstest.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+
+			<p:menuitem value="Accueil" url="accueilAdmin.xhtml"
+				icon="ui-icon-home" />
+
+			<p:submenu label="Catégories" icon="ui-icon-person">
+				<p:menuitem value="Ajouter Catégories" url="ajout_categorie.xhtml"
+					icon="ui-icon-plusthick" />
+				<p:menuitem value="Modifier Catégories" url="modif_categorie.xhtml"
+					icon="ui-icon-minusthick" />
+				<p:menuitem value="Supprimer Catégories" url="suppr_categorie.xhtml"
+					icon="ui-icon-pencil" />
+				<f:facet name="coucou">
+					<h:commandButton value="Afficher toutes les catégories"
+						action="#{catMB.recupAllCategorie}" />
+				</f:facet>
+				<p:menuitem value="Rechercher Catégories"
+					url="rechercher_categorie.xhtml" icon="ui-icon-pencil" />
+			</p:submenu>
+
+			<p:submenu label="Produits" icon="ui-icon-person">
+				<p:menuitem value="Ajouter Produit" url="ajout_produit.xhtml"
+					icon="ui-icon-plusthick" />
+				<p:menuitem value="Modifier Produit" url="modif_produit.xhtml"
+					icon="ui-icon-minusthick" />
+				<p:menuitem value="Supprimer Produit" url="suppr_produit.xhtml"
+					icon="ui-icon-pencil" />
+				<f:facet name="coucou1">
+					<h:commandButton value="Afficher tous les produits"
+						action="#{pMb.getAllProduits}" />
+				</f:facet>
+				<p:menuitem value="Rechercher Produits"
+					url="rechercher_produit.xhtml" icon="ui-icon-pencil" />
+			</p:submenu>
+
+			<p:submenu label="Client" icon="ui-icon-person">
+				<p:menuitem value="Ajouter Client" url="ajout_client.xhtml"
+					icon="ui-icon-plusthick" />
+				<p:menuitem value="Modifier Client" url="modif_client.xhtml"
+					icon="ui-icon-minusthick" />
+				<p:menuitem value="Supprimer Client" url="suppr_client.xhtml"
+					icon="ui-icon-pencil" />
+				<f:facet name="coucou2">
+					<p:commandLink actionListener="#{clMB.getAllClients}">
+						<h:outputText value="Afficher tous les clients"/>
+					</p:commandLink>
+				</f:facet>
+				<p:menuitem value="Rechercher Clients" url="rechercher_client.xhtml"
+					icon="ui-icon-pencil" />
+			</p:submenu>
+
+			<p:submenu label="Commande" icon="ui-icon-person">
+				<p:menuitem value="Modifier Commande" url="modif_commande.xhtml"
+					icon="ui-icon-plusthick" />
+				<p:menuitem value="Supprimer Commande" url="suppr_commande.xhtml"
+					icon="ui-icon-pencil" />
+				<f:facet name="coucou3">
+					<h:commandLink actionListener="#{comMB.getAllCommandes}">
+						<h:outputText value="Afficher toutes les commandes"/>
+					</h:commandLink>
+				</f:facet>
+				<p:menuitem value="Rechercher Commandes"
+					url="rechercher_commande.xhtml" icon="ui-icon-pencil" />
+
+			</p:submenu>
+
+
+		</p:menubar>
+
+	</h:form>
+
+</h:body>
+
+</html>

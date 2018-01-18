@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Accueil Administrateur</title>
+
+</h:head>
+
+<h:body style="background-image: url('resources/images/confetti.gif')">
+
+	<div>
+
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+		<ui:insert name="headerAdmin">
+			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/headerAdmin.xhtml"></ui:include>
+		</ui:insert>
+
+	</div>
+
+
+
+	<h:outputText style="color:white; font-size:30px"
+		value="C'est la fête ! Vous êtes connecté en tant qu'administrateur ! Que souhaitez vous gérer aujourd'hui ?" />
+
+	<h:form>
+
+		<p:commandButton value="Ajouter Produit" action="ajout_produit"
+			update="message" />
+		<p:commandButton value="Modifier Produit" action="modif_produit"
+			update="message" />
+		<p:commandButton value="Supprimer Produit" action="suppr_produit"
+			update="message" />
+		<p:commandButton value="Afficher tous les produits"
+			action="#{pMb.getAllProduits}" update="message" />
+		<p:commandButton value="Rechercher un produit"
+			action="rechercher_produit" update="message" />
+
+		<br />
+		<hr />
+
+		<p:commandButton value="Ajouter Catégorie" action="ajout_categorie"
+			update="message" />
+		<p:commandButton value="Supprimer Catégorie" action="suppr_categorie"
+			update="message" />
+		<p:commandButton value="Modifier Catégorie" action="modif_categorie"
+			update="message" />
+		<p:commandButton value="Afficher toutes les catégories"
+			action="#{catMB.recupAllCategorie}" update="message" />
+		<p:commandButton value="Rechercher Catégorie"
+			action="rechercher_categorie" update="@all" />
+
+		<br />
+		<hr />
+
+		<p:commandButton value="Ajouter Client" action="ajout_client"
+			update="message" />
+		<p:commandButton value="Supprimer Client" action="suppr_client"
+			update="message" />
+		<p:commandButton value="Modifier Client" action="modif_client"
+			update="message" />
+		<p:commandButton value="Afficher tous les Clients"
+			action="#{clMB.getAllClients}" update="message" />
+		<p:commandButton value="Rechercher Client" action="rechercher_client"
+			update="message" />
+
+		<br />
+		<hr />
+
+		<p:commandButton style="color:white; background-color:black"
+			value="Supprimer Commande" action="suppr_commande" update="message" />
+		<p:commandButton style="color:white; background-color:black"
+			value="Modifier Commande" action="modif_commande" update="message" />
+		<p:commandButton style="color:white; background-color:black"
+			value="Afficher toutes les Commandes"
+			action="#{comMB.getAllCommandes}" update="message" />
+		<p:commandButton style="color:white; background-color:black"
+			value="Rechercher Commande" action="rechercher_commande"
+			update="message" />
+
+	</h:form>
+
+	<p:growl id="message" />
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
+		<ui:insert name="footerAdmin">
+			<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/footerAdmin.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</html>

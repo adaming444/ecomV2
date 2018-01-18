@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Accueil</title>
+
+</h:head>
+
+<h:body style="background-image: url('resources/images/confetti.gif')">
+
+	<div>
+
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+		<ui:insert name="headerClient">
+			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/headerClient.xhtml"></ui:include>
+		</ui:insert>
+
+	</div>
+
+
+	<h:outputText style="color:white; font-size:30px"
+		value="Bienvenue sur le site de supercarnaval ! Que souhaitez vous acheter aujourd'hui ?" />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+
+	<h:form>
+
+
+		<p:commandButton value="Afficher tous les produits"
+			action="#{pMb.getAllProduitsClient}" update="message" />
+		<p:commandButton value="Rechercher un produit"
+			action="rechercher_produit" update="message" />
+
+		<br />
+		<hr />
+
+
+		<p:commandButton value="Afficher toutes les catégories"
+			action="#{catMB.recupAllCategorie}" update="message" />
+		<p:commandButton value="Rechercher Catégorie"
+			action="rechercher_categorie" update="@all" />
+
+
+	</h:form>
+
+	<p:growl id="message" />
+
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
+		<ui:insert name="footerClient">
+			<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/footerClient.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</html>

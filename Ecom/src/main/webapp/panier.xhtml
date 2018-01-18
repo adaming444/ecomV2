@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Panier</title>
+
+</h:head>
+
+<h:body style="background-image: url('resources/images/confetti.gif')">
+
+	<div>
+
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+		<ui:insert name="headerClient">
+			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/headerClient.xhtml"></ui:include>
+		</ui:insert>
+
+	</div>
+
+
+
+	<p:dataTable id="idTable" var="lc" value="#{panMB.ligneCommande}">
+
+		<p:column headerText="visuel">
+			<h:graphicImage value="#{lc.produit.image}" width="100 px"
+				height="100 px" />
+		</p:column>
+
+		<p:column headerText="Produit">
+			<h:outputText value="#{lc.produit.designation}" />
+		</p:column>
+
+		<p:column headerText="Prix unitaire">
+			<h:outputText value="#{lc.produit.prix}" />
+		</p:column>
+
+		<p:column headerText="Quantité">
+			<h:inputText value="#{lc.quantite}" />
+		</p:column>
+
+		<p:column headerText="operation">
+			<h:form>
+				<p:commandLink value="Supprimer"
+					action="#{panMB.deleteLigneCommande}" update="@all">
+					<f:setPropertyActionListener value="#{panMB.produit.idProduit}"
+						target="#{panMB.produit.idProduit}" />
+				</p:commandLink>
+        				/
+        				<p:commandLink value="Modifier" action="#{pMB.modifLien}">
+					<f:setPropertyActionListener value="#{pMB.produit.idProduit}"
+						target="#{pMB.produit.idProduit}" />
+				</p:commandLink>
+			</h:form>
+		</p:column>
+
+	</p:dataTable>
+
+	<h:form>
+		<p:commandButton value="Vider panier" action="#{panMB.viderPanier}"
+			update="@all" />
+		<p:commandButton value="Passer la commande"
+			action="#{panMB.validerPanier}" update="@all" />
+	</h:form>
+
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
+		<ui:insert name="footerClient">
+			<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/footerClient.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</html>
