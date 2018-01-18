@@ -6,6 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<!-- Declaration de variable pour indiquer les versions -->
 	<properties>
 		<hibernate.version>4.2.21.Final</hibernate.version>
 		<spring.version>4.1.9.RELEASE</spring.version>
