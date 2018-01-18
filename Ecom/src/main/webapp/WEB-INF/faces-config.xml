@@ -6,7 +6,7 @@
 
 	<!-- integrer jsf avec spring ioc : pour que le conteneur spring fasse la 
 		dif entre el de spring et el de jsf -->
-
+	<!-- EL pour expression language -->
 	<application>
 
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
