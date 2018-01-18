@@ -2,6 +2,7 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +27,16 @@ public class ProduitDaoImpl implements IProduitDao {
 		Session s = sf.getCurrentSession();
 
 		// écriture de la requete HQL
-		String req = "from Produit as e where e.formateur.idFormateur=:pIdForm";
+		String req = "from Produit";
 
 		// création d'un query
 		Query query = s.createQuery(req);
 
 		// assignation des paramètres
-		query.setParameter("pIdForm", f.getIdFormateur());
 
-		List<Etudiant> listEtudiants = query.list();
+		List<Produit> listProduits = query.list();
 
-		return listEtudiants;
+		return listProduits;
 	}
 
 	@Override
