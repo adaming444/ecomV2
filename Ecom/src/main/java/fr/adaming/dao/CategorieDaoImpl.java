@@ -2,6 +2,7 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,9 @@ public class CategorieDaoImpl implements ICategorieDao {
 		catOut.setNomCategorie(c.getNomCategorie());
 		catOut.setDescription(c.getDescription());
 		catOut.setPhoto(c.getPhoto());
-		catOut.setProduit(c.getProduit());
+		if (c.getProduit() != null) {
+			catOut.setProduit(c.getProduit());
+		}
 
 		// actualisation de la bdd
 		s.saveOrUpdate(catOut);
@@ -47,26 +50,54 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 	@Override
 	public int deleteCategorie(Long id) {
-		// TODO Auto-generated method stub
-		return 0;
+		Session s = sf.getCurrentSession();
+		// ecriture de la requete
+		String req = "DELETE FROM Categorie c WHERE c.idCategorie=:pId";
+
+		// creation de la query
+		Query query = s.createQuery(req);
+
+		// Assignation des parametres
+		query.setParameter("pId", id);
+
+		// execute la requete et retourne l'entier résultat
+		return query.executeUpdate();
+
 	}
 
 	@Override
 	public Categorie getCategorieById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		return (Categorie) s.get(Categorie.class, id);
 	}
 
 	@Override
 	public Categorie getCategorieByName(String Name) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		// ecriture de la requete
+		String req = "FROM Categorie c WHERE c.nomCategorie=: pNomC";
+
+		// creation de la query
+		Query query = s.createQuery(req);
+
+		// Assignation des parametres
+		query.setParameter("pNomC", Name);
+
+		// envoie et recuperation du resultat et retour
+		return (Categorie) query.uniqueResult();
 	}
 
 	@Override
 	public List<Categorie> getAllCategorie() {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		// ecriture de la requete
+		String req = "FROM Categorie c";
+
+		// creation de la query
+		Query query = s.createQuery(req);
+
+		// envoie et recuperation du resultat et retour
+		return query.list();
 	}
 
 }
