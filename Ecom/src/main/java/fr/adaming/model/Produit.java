@@ -141,6 +141,7 @@ public class Produit implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
 
 	// Déclaration du ToString
 

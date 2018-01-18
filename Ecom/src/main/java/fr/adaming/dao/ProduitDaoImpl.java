@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 @Repository
@@ -41,20 +42,45 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public Produit addProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		// ouverture de la session
+		Session s = sf.getCurrentSession();
+
+		// ajout de l'étudiant dans la BD
+		s.save(p);
+
+		return p;
 	}
 
 	@Override
 	public Produit updateProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		// ouverture de la session
+		Session s = sf.getCurrentSession();
+
+		Produit pOut = (Produit) s.get(Produit.class, p.getIdProduit());
+		pOut.setDesignation(p.getDesignation());
+		pOut.setDescription(p.getDescription());
+		pOut.setPrix(p.getPrix());
+		pOut.setQuantite(p.getQuantite());
+
+		s.saveOrUpdate(pOut);
+		return pOut;
 	}
 
 	@Override
 	public int deleteProduit(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		// ouverture de la session
+		Session s = sf.getCurrentSession();
+
+		// création de la requete HQL
+		String req = "delete from Produit as p where p.idProduit =:pIdProd";
+
+		// création d'un query
+		Query query = s.createQuery(req);
+
+		// assignation des paramètres
+		query.setParameter("pIdProd", id);
+
+		return query.executeUpdate();
 	}
 
 	@Override
@@ -65,8 +91,20 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public Produit getProduitbyId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub// ouverture de la session
+		Session s = sf.getCurrentSession();
+
+		// écriture de la requete HQL
+		String req = "from Produit as p where p.idProduit=:pIdProd";
+
+		// création d'un query
+		Query query = s.createQuery(req);
+
+		// assignation des paramètres
+		query.setParameter("pIdProd", id);
+
+		Produit pOut = (Produit) query.uniqueResult();
+		return pOut;
 	}
 
 	@Override
@@ -76,9 +114,21 @@ public class ProduitDaoImpl implements IProduitDao {
 	}
 
 	@Override
-	public List<Produit> getAllProduitByCategorie(long idCat) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Produit> getAllProduitByCategorie(Categorie c) {
+		// ouverture de la session
+		Session s = sf.getCurrentSession();
+
+		// écriture de la requete HQL
+		String req = "from Produit p where p.categorie.idCategorie=:pIdCat";
+
+		// création d'un query
+		Query query = s.createQuery(req);
+		query.setParameter("pIdCat", c.getIdCategorie());
+		// assignation des paramètres
+
+		List<Produit> listProduitsCat = query.list();
+
+		return listProduitsCat;
 	}
 
 }

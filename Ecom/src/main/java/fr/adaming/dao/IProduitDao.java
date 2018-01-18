@@ -2,6 +2,7 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 public interface IProduitDao {
@@ -20,6 +21,6 @@ public interface IProduitDao {
 	
 	public Produit getProduitbyName(String designation);
 	
-	public List<Produit> getAllProduitByCategorie(long idCat);
+	public List<Produit> getAllProduitByCategorie(Categorie c);
 
 }
