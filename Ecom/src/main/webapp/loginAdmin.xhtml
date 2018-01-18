@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Panier</title>
+
+</h:head>
+
+<h:body style="background-image: url('resources/images/confetti.gif')">
+
+	<div>
+
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+		<ui:insert name="headerClient">
+			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/headerClient.xhtml"></ui:include>
+		</ui:insert>
+
+	</div>
+
+	<div style="color:rgb(255, 255, 255); opacity: 0.5; filter: alpha(opacity=50)">
+		<h:form>
+
+			<h:panelGrid columns="2">
+
+				<h:outputText style="color:white" value="Mail : " />
+
+				<h:inputText value="#{aMb.admin.mail}" />
+
+				<h:outputText style="color:white" value="Password : " />
+
+				<h:inputText value="#{aMb.admin.mdp}" />
+
+				<p:commandButton value="Se connecter" action="#{aMb.seConnecter}"
+					update="@all" />
+
+			</h:panelGrid>
+
+		</h:form>
+
+		<p:growl id="message" />
+	</div>
+	
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
+		<ui:insert name="footerClient">
+			<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/footerClient.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</html>

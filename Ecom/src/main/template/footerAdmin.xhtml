@@ -1,0 +1,75 @@
+<!DOCTYPE html >
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Page</title>
+
+</h:head>
+
+<h:body>
+
+	<div class="footerAdmin" style="bottom: 0px">
+
+		<p:layout
+			style="min-width:200px;min-height:200px; background_color:yellow">
+
+			<p:layoutUnit position="west" resizable="true" size="400"
+				minSize="100" maxSize="1000" styleClass="myLayoutStyleClass1">
+
+				<center>
+					<h:outputText style="color:blue; font-size:25px; align: center"
+						value="A propos" />
+				</center>
+
+				<center>
+					<h:outputText style="color:blue; font-size:20px; align: center"
+						value="Qui sommes nous ?" />
+				</center>
+
+				<center>
+					<h:outputText style="color:blue; font-size:20px; align: center"
+						value="Le paiement" />
+				</center>
+
+				<center>
+					<h:outputText style="color:blue; font-size:20px; align: center"
+						value="Le SAV" />
+				</center>
+
+					<center>
+					<h:form>
+				<p:commandButton value="Se déconnecter"
+					action="accueil"/>
+					</h:form>
+	</center>
+				
+
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center" resizable="true" size="400"
+				minSize="100" maxSize="1000" styleClass="myLayoutStyleClass2">
+				<center>
+					<h:outputText style="color:yellow; font-size:25px;  margin: 0 auto"
+						value="Communauté" />
+				</center>
+			</p:layoutUnit>
+
+			<p:layoutUnit position="east" resizable="true" size="400"
+				minSize="100" maxSize="1000" styleClass="myLayoutStyleClass3">
+				<center>
+					<h:outputText style="color:green; font-size:25px;  margin: 0 auto"
+						value="Contact" />
+				</center>
+			</p:layoutUnit>
+
+		</p:layout>
+
+	</div>
+</h:body>
+</html>
