@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Admin implements Serializable{
 	
 	
-	
+	///
 	// Déclarations des attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
