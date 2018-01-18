@@ -61,9 +61,9 @@ public class AdminManagedBean {
 			//ajout du formateur dans la session
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("admin", this.admin);
 			
-			return "accueil";
+			return "accueilAdmin";
 		} else {
-			return "login";
+			return "loginAdmin";
 		}
 	}
 }

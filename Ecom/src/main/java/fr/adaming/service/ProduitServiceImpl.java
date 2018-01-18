@@ -14,7 +14,10 @@ public class ProduitServiceImpl implements IProduitService {
 	
 	@Autowired
 	private IProduitDao produitDao;
-	
+
+	public void setProduitDao(IProduitDao produitDao) {
+		this.produitDao = produitDao;
+	}
 
 	@Override
 	public List<Produit> getAllProduit() {
