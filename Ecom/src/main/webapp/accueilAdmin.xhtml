@@ -14,16 +14,12 @@
 <h:body style="background-image: url('resources/images/confetti.gif')">
 
 	<div>
-
 		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
 		<ui:insert name="headerAdmin">
 			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
 			<ui:include src="/template/headerAdmin.xhtml"></ui:include>
 		</ui:insert>
-
 	</div>
-
-
 
 	<h:outputText style="color:white; font-size:30px"
 		value="C'est la fête ! Vous êtes connecté en tant qu'administrateur ! Que souhaitez vous gérer aujourd'hui ?" />
@@ -86,6 +82,7 @@
 	</h:form>
 
 	<p:growl id="message" />
+
 	<div>
 		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
 		<ui:insert name="footerAdmin">
@@ -93,6 +90,7 @@
 			<ui:include src="/template/footerAdmin.xhtml"></ui:include>
 		</ui:insert>
 	</div>
+
 
 </h:body>
 
