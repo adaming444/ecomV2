@@ -27,7 +27,7 @@ public class CategorieManagedBean implements Serializable {
 	@ManagedProperty(value = "#{catService}")
 	private ICategorieService categorieService;
 
-	private Categorie categorie;
+	private Categorie categorie; 
 
 	private List<Categorie> listeCategorie;
 
