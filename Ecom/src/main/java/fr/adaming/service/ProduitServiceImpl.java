@@ -22,26 +22,22 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public List<Produit> getAllProduit() {
-		// TODO Auto-generated method stub
-		return null;
+		return produitDao.getAllProduit();
 	}
 
 	@Override
 	public Produit addProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		return produitDao.addProduit(p);
 	}
 
 	@Override
 	public Produit updateProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		return produitDao.updateProduit(p);
 	}
 
 	@Override
 	public int deleteProduit(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return produitDao.deleteProduit(id);
 	}
 
 	@Override
@@ -52,8 +48,7 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public Produit getProduitbyId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return produitDao.getProduitbyId(id);
 	}
 
 	@Override
@@ -64,8 +59,7 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public List<Produit> getAllProduitByCategorie(Categorie c) {
-		// TODO Auto-generated method stub
-		return null;
+		return produitDao.getAllProduitByCategorie(c);
 	}
 	
 	
