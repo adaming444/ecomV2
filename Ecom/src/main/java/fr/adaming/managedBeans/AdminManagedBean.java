@@ -1,5 +1,7 @@
 package fr.adaming.managedBeans;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -10,7 +12,7 @@ import fr.adaming.service.IAdminService;
 
 @ManagedBean(name = "aMb")
 @RequestScoped
-public class AdminManagedBean {
+public class AdminManagedBean implements Serializable {
 
 	// transformation de l'association UML en java
 	@ManagedProperty(value = "#{aService}")
