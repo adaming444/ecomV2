@@ -43,12 +43,80 @@ public class CategorieManagedBean implements Serializable {
 		this.categorie = new Categorie();
 		this.listeCategorie = new ArrayList<Categorie>();
 	}
+	
+	//getters et setters
+	
+	
 
 	// methode qui s'execute apres l'instanciation du ManagedBean
 	@PostConstruct
 	public void init() {
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		this.admin = (Admin) maSession.getAttribute("adminSession");
+	}
+
+	public ICategorieService getCategorieService() {
+		return categorieService;
+	}
+
+	public void setCategorieService(ICategorieService categorieService) {
+		this.categorieService = categorieService;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	public List<Categorie> getListeCategorie() {
+		return listeCategorie;
+	}
+
+	public void setListeCategorie(List<Categorie> listeCategorie) {
+		this.listeCategorie = listeCategorie;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public HttpSession getMaSession() {
+		return maSession;
+	}
+
+	public void setMaSession(HttpSession maSession) {
+		this.maSession = maSession;
+	}
+
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public Categorie getSelectedCat() {
+		return selectedCat;
+	}
+
+	public void setSelectedCat(Categorie selectedCat) {
+		this.selectedCat = selectedCat;
 	}
 
 	

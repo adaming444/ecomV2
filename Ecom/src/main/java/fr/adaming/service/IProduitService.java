@@ -21,6 +21,6 @@ public interface IProduitService {
 	
 	public Produit getProduitbyName(String designation);
 	
-	public List<Produit> getAllProduitByCategorie(Categorie c);
+	public List<Produit> getAllProduitsByCategorie(Categorie c);
 
 }

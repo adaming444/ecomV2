@@ -114,7 +114,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	}
 
 	@Override
-	public List<Produit> getAllProduitByCategorie(Categorie c) {
+	public List<Produit> getAllProduitsByCategorie(Categorie c) {
 		// ouverture de la session
 		Session s = sf.getCurrentSession();
 

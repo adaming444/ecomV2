@@ -34,7 +34,12 @@
 
 			<p:panel header="#{cat.nomCategorie}" style="text-align:center">
 				<h:panelGrid columns="1" style="width:100%">
-					<h:graphicImage value="#{cat.image}" width="60 px" height="60 px" />
+
+					<h:commandLink action="#{pMb.getProduitsByCategorie}">
+						<h:graphicImage value="#{cat.image}" width="60 px" height="60 px" />
+						<f:setPropertyActionListener value="#{cat}"
+						target="#{pMb.categorie}" />
+					</h:commandLink>
 
 					<p:commandLink update=":form:catDetail"
 						oncomplete="PF('catDialog').show()" title="View Detail">
@@ -44,6 +49,7 @@
 							target="#{catMB.selectedCat}" />
 					</p:commandLink>
 				</h:panelGrid>
+
 			</p:panel>
 
 		</p:dataGrid>

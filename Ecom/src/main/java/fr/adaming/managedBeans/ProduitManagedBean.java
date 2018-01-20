@@ -17,6 +17,7 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 import fr.adaming.model.Admin;
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IProduitService;
 
@@ -34,12 +35,14 @@ public class ProduitManagedBean implements Serializable {
 	// Les attributs du modele MVC
 	private Admin admin;
 	private List<Produit> listProduits;
+	private List<Produit> listProduitsParCateg;
 	private HttpSession maSession;
 	private Produit produit;
 	// private List<Categorie> listCategories;
 	private UploadedFile file;
 	private Produit selectedPdt;
 	private String image;
+	private Categorie categorie;
 
 	public ProduitManagedBean() {
 		// Instancier un produit
@@ -75,6 +78,14 @@ public class ProduitManagedBean implements Serializable {
 
 	public void setListProduits(List<Produit> listProduits) {
 		this.listProduits = listProduits;
+	}
+	
+	public List<Produit> getListProduitsParCateg() {
+		return listProduitsParCateg;
+	}
+
+	public void setListProduitsParCateg(List<Produit> listProduitsParCateg) {
+		this.listProduitsParCateg = listProduitsParCateg;
 	}
 
 	public HttpSession getMaSession() {
@@ -117,8 +128,16 @@ public class ProduitManagedBean implements Serializable {
 		this.image = image;
 	}
 
-	// Les methodes metiers
+	public Categorie getCategorie() {
+		return categorie;
+	}
 
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	// Les methodes metiers
+	
 	public String addProduit() throws Exception {
 		// //Appel de la methode service
 		System.out.println(this.produit);
@@ -203,23 +222,23 @@ public class ProduitManagedBean implements Serializable {
 		return "affiche_produits";
 	}
 
-	public String getAllProduitsClient() {
-		this.listProduits = pService.getAllProduit();
+	public String getProduitsByCategorie() {
+		this.listProduits = pService.getAllProduitsByCategorie(this.categorie);
 		if (listProduits.size() > 0) {
 
-			List<Produit> listeTemp = new ArrayList<Produit>();
+			List<Produit> listeCateg = new ArrayList<Produit>();
 			for (Produit prod : listProduits) {
 				prod.setImage("data:image/png;base64," + Base64.encodeBase64String(prod.getPhoto()));
-				listeTemp.add(prod);
+				listeCateg.add(prod);
 			}
-			this.setListProduits(listeTemp);
+			this.setListProduitsParCateg(listeCateg);
 
-			maSession.setAttribute("produitList", this.listProduits);
+			maSession.setAttribute("produitCategList", this.listProduitsParCateg);
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Une erreur est survenue du chargement de la liste."));
 		}
-		return "affiche_produitsparcategorietheoriquement";
+		return "affiche_produitsClient";
 	}
 
 }

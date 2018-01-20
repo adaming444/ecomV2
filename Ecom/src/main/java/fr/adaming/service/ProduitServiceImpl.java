@@ -58,8 +58,8 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public List<Produit> getAllProduitByCategorie(Categorie c) {
-		return produitDao.getAllProduitByCategorie(c);
+	public List<Produit> getAllProduitsByCategorie(Categorie c) {
+		return produitDao.getAllProduitsByCategorie(c);
 	}
 	
 	
