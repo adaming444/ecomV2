@@ -2,11 +2,13 @@ package fr.adaming.managedBeans;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import fr.adaming.model.Admin;
 import fr.adaming.service.IAdminService;
@@ -26,6 +28,7 @@ public class AdminManagedBean implements Serializable {
 
 	// les attributs du modele de MVC
 	private Admin admin;
+
 	// private List<Produit> listProduits;
 	// private List<Categorie> listCategories;
 
@@ -66,7 +69,6 @@ public class AdminManagedBean implements Serializable {
 			
 			return "accueil_admin";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la connexion."));
 			return "login_admin";
 		}
 	}
