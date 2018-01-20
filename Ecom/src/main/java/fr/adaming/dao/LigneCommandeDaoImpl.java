@@ -44,15 +44,20 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 	public int deleteLigneCommande(Long id) {
 		Session s = sf.getCurrentSession();
 		
+		String req = "DELETE LigneCommande l WHERE l.idLigne=:pId";
 		
+		Query query = s.createQuery(req);
 		
-		return 0;
+		query.setParameter("pId", id);
+		
+		return query.executeUpdate();
 	}
 
 	@Override
 	public LigneCommande getLigneCommandeById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		
+		return (LigneCommande) s.get(LigneCommande.class, id);
 	}
 
 	@Override
