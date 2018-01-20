@@ -12,12 +12,8 @@
 	</h:head>
 
 <h:body>
-	<ui:insert name="page">
-		<!-- Specifier le fichier à inserer avec la balise ui:include -->
-		<ui:include src="/template/template.xhtml"></ui:include>
-		<ui:include src="/template/footer.xhtml"></ui:include>
-	</ui:insert>
-
-
+<f:metadata>
+    <f:event listener="#{clMB.getAllClients}" type="preRenderView" />
+</f:metadata>
 </h:body>
 </html>

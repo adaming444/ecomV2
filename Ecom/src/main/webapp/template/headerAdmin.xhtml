@@ -47,8 +47,10 @@
 				<p:menuitem value="Supprimer Produit" url="suppr_produit.xhtml"
 					icon="ui-icon-pencil" />
 				<f:facet name="coucou1">
-					<h:commandButton value="Afficher tous les produits"
-						action="#{pMb.getAllProduits}" />
+					<p:commandLink value="Afficher tous les produits"
+						actionListener="#{pMb.getAllProduits}">
+						<h:outputText value="Afficher tous les produits" />
+					</p:commandLink>
 				</f:facet>
 				<p:menuitem value="Rechercher Produits"
 					url="rechercher_produit.xhtml" icon="ui-icon-pencil" />
@@ -61,9 +63,11 @@
 					icon="ui-icon-minusthick" />
 				<p:menuitem value="Supprimer Client" url="suppr_client.xhtml"
 					icon="ui-icon-pencil" />
+									<p:menuitem value="afichertous Client" url="test.xhtml"
+					icon="ui-icon-pencil" />
 				<f:facet name="coucou2">
 					<p:commandLink actionListener="#{clMB.getAllClients}">
-						<h:outputText value="Afficher tous les clients"/>
+						<h:outputText value="Afficher tous les clients" />
 					</p:commandLink>
 				</f:facet>
 				<p:menuitem value="Rechercher Clients" url="rechercher_client.xhtml"
@@ -77,7 +81,7 @@
 					icon="ui-icon-pencil" />
 				<f:facet name="coucou3">
 					<h:commandLink actionListener="#{comMB.getAllCommandes}">
-						<h:outputText value="Afficher toutes les commandes"/>
+						<h:outputText value="Afficher toutes les commandes" />
 					</h:commandLink>
 				</f:facet>
 				<p:menuitem value="Rechercher Commandes"

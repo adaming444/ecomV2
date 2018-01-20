@@ -23,39 +23,28 @@
 
 	</div>
 
-	<h:outputText style="color:white; font-size:30px"
-		value="Bienvenue sur le site de supercarnaval ! Que souhaitez vous acheter aujourd'hui ?" />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
 
 
-	<h:form>
+	<div id="corps" style="padding: 70px 0">
 
+		<center>
 
-		<p:commandButton value="Afficher tous les produits"
-			action="#{pMb.getAllProduitsClient}" update="message" />
-		<p:commandButton value="Rechercher un produit"
-			action="rechercher_produit" update="message" />
+			<h:outputText style="color:white; font-size:30px"
+				value="Bienvenue sur le site de supercarnaval ! Que souhaitez vous acheter aujourd'hui ?" />
 
-		<br />
-		<hr />
+			<h:form>
 
+				<br />
+				<br />
 
-		<p:commandButton value="Afficher toutes les catégories"
-			action="#{catMB.recupAllCategorie}" update="message" />
-		<p:commandButton value="Rechercher Catégorie"
-			action="rechercher_categorie" update="@all" />
+				<p:commandButton value="Accéder au site"
+					action="#{catMB.recupAllCategorie}" update="message" />
 
+			</h:form>
 
-	</h:form>
+		</center>
+
+	</div>
 
 	<p:growl id="message" />
 
