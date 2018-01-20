@@ -33,9 +33,9 @@
 		<div
 			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
 
-			<h:form style="text-align: center">
+			<h:form style="text-align: center;display:block">
 
-				<h:panelGrid columns="2">
+				<center><h:panelGrid columns="2">
 		
 			Nom  : <h:inputText value="#{clMB.client.nomClient}" />
 			
@@ -45,10 +45,10 @@
 			
 			Adresse : <h:inputText value="#{clMB.client.adresse}" />
 
-					<p:commandButton value="S'enregistrer" action="#{clMB.addClient}"
-						style="margin : auto" />
+					<center><p:commandButton value="S'enregistrer" action="#{clMB.addClient}"
+						style="margin : auto" /></center>
 
-				</h:panelGrid>
+				</h:panelGrid></center>
 
 			</h:form>
 

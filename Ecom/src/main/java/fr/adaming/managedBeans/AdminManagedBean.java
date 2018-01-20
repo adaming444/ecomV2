@@ -2,6 +2,7 @@ package fr.adaming.managedBeans;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -63,9 +64,10 @@ public class AdminManagedBean implements Serializable {
 			//ajout du formateur dans la session
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("admin", this.admin);
 			
-			return "accueilAdmin";
+			return "accueil_admin";
 		} else {
-			return "loginAdmin";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de la connexion."));
+			return "login_admin";
 		}
 	}
 }
