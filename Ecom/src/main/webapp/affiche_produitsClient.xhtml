@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Affichage des produits</title>
+
+</h:head>
+
+<h:body>
+
+	<h:body style="background-image: url('resources/images/confetti.gif')">
+
+		<div>
+
+			<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+			<ui:insert name="headerClient">
+				<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+				<ui:include src="/template/headerClient.xhtml"></ui:include>
+			</ui:insert>
+
+		</div>
+
+		<h:form id="form">
+			<p:dataGrid var="pdt" value="#{sessionScope.produitList}" columns="3"
+				layout="grid" rows="12" paginator="true" id="pdt"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,16">
+
+				<f:facet name="header">
+            			Produits
+       				</f:facet>
+
+				<p:panel header="#{pdt.designation}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+						<h:graphicImage value="#{pdt.image}" width="60 px" height="60 px" />
+
+						<p:commandLink update=":form:pdtDetail"
+							oncomplete="PF('pdtDialog').show()" title="View Detail">
+							<h:outputText styleClass="ui-icon ui-icon-search"
+								style="margin:0 auto;" />
+							<f:setPropertyActionListener value="#{pdt}"
+								target="#{pMb.selectedPdt}" />
+						</p:commandLink>
+					</h:panelGrid>
+				</p:panel>
+
+			</p:dataGrid>
+
+			<p:dialog header="Informations du produit" widgetVar="pdtDialog"
+				modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="pdtDetail" style="text-align:center;">
+					<p:panelGrid columns="2" rendered="#{not empty pMb.selectedPdt}"
+						columnClasses="label,value">
+						<f:facet name="header">
+							<h:graphicImage value="#{pMb.selectedPdt.image}" width="60 px"
+								height="60 px" />
+						</f:facet>
+
+						<h:outputText value="Id:" />
+						<h:outputText value="#{pMb.selectedPdt.idProduit}" />
+
+						<h:outputText value="Nom du produit" />
+						<h:outputText value="#{pMb.selectedPdt.designation}" />
+
+						<h:outputText value="Description du produit" />
+						<h:outputText value="#{pMb.selectedPdt.description}" />
+
+						<h:outputText value="Prix du produit" />
+						<h:outputText value="#{pMb.selectedPdt.prix}" />
+
+						<h:outputText value="Quantité disponible du produit" />
+						<h:outputText value="#{pMb.selectedPdt.quantite}" />
+
+						<h:outputText value="Quantité à ajouter au panier" />
+						<h:inputText value="#{panMB.ligneCommande.quantite}" />
+
+					</p:panelGrid>
+				</p:outputPanel>
+
+				<p:commandLink value="Ajouter" action="#{panMB.addLigneCommande}"
+					update="@all">
+					<f:setPropertyActionListener value="#{pdt.produit.idProduit}"
+						target="#{panMB.produit.idProduit}" />
+				</p:commandLink>
+
+			</p:dialog>
+		</h:form>
+
+		<p:growl id="message" />
+
+		<div>
+			<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
+			<ui:insert name="footerClient">
+				<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
+				<ui:include src="/template/footerClient.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+
+	</h:body>
+</html>

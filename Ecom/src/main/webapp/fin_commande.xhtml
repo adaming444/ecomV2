@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -8,7 +7,7 @@
 
 <h:head>
 
-	<title>Login</title>
+	<title>Valider votre commande</title>
 
 </h:head>
 
@@ -24,28 +23,26 @@
 
 	</div>
 
-	<div
-		style="background-color: rgb(255, 255, 255); opacity: 0.5; filter: alpha(opacity = 50); height: 200 px; width: 400 px">
-		<h:form>
+	<div id="corps" style="padding: 70px 0">
 
-			<h:panelGrid columns="2">
+		<h:outputText style="color:white; font-size:30px; text-align:center"
+			value="Merci d'avoir choisi SuperCarnaval pour votre commande." /><br />
+		<h:outputText style="color:white; font-size:30px; text-align:center"
+			value="Vous trouverez un récapitulatif de votre commande dans votre boite mail." /><br />
+		<h:outputText style="color:white; font-size:30px; text-align:center"
+			value="A bientot" />
 
-				<h:outputText style="color:black" value="Mail : " />
+		<br /> <br /> <br />
 
-				<h:inputText value="#{aMb.admin.mail}" />
+			<h:form style="text-align: center">
 
-				<h:outputText style="color:black" value="Password : " />
+					<p:commandButton value="Retourner à l'accueil du site" action="#{clMB.redirectAccueil}"
+						style="margin : auto" />
 
-				<h:inputText value="#{aMb.admin.mdp}" />
-
-				<p:commandButton value="Se connecter" action="#{aMb.seConnecter}"
-					update="@all" />
-
-			</h:panelGrid>
-
-		</h:form>
+			</h:form>
 
 		<p:growl id="message" />
+
 	</div>
 
 	<div>
@@ -55,8 +52,6 @@
 			<ui:include src="/template/footerClient.xhtml"></ui:include>
 		</ui:insert>
 	</div>
-
-
 </h:body>
 
 </html>

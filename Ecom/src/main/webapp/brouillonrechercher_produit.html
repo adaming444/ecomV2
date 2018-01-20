@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page</title>
+
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2">
+		
+		Id:<p:inputText value="#{pMb.produit.idProduit}" />
+
+			<p:commandButton value="Rechercher via Id"
+				action="#{pMb.getProduitbyId}" icon="ui-icon-disk"
+				update="@all " />
+				
+		Designation du produit :<p:inputText
+				value="#{pMb.produit.designation}" />
+
+			<p:commandButton value="Rechercher via le Nom"
+				action="#{pMb.getProduitbyName}" icon="ui-icon-disk"
+				update="@all" />
+
+		</h:panelGrid>
+	</h:form>
+
+	<h1>
+		<p:messages id="messages" showDetail="true" closable="true">
+
+		</p:messages>
+	</h1>
+</h:body>
+</html>

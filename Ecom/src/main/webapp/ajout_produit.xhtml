@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Page ajout produit</title>
+
+</h:head>
+
+<h:body style="background-image: url('resources/images/confetti.gif')">
+
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+		<ui:insert name="headerAdmin">
+			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/headerAdmin.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+	<h:form>
+
+		<h:panelGrid columns="2">
+		
+					Designation : <h:inputText value="#{pMb.produit.designation}" />
+					
+					Description : <h:inputText value="#{pMb.produit.description}" />
+					
+					Prix : <h:inputText value="#{pMb.produit.prix}" />
+					
+					Quantité en stock : <h:inputText value="#{pMb.produit.quantite}" />
+					
+					Photo :	<p:fileUpload mode="advanced" auto="true"
+				fileUploadListener="#{pMb.upload}" update="idImage" />
+
+			<h:graphicImage id="idImage" value="#{pMb.image}" />
+			<p:commandButton value="Ajouter" action="#{pMb.addProduit}" />
+
+		</h:panelGrid>
+
+	</h:form>
+
+	<h:form>
+		<p:commandButton value="Generer la liste de produit"
+			action="#{pMb.createPdf}" />
+	</h:form>
+
+	<p:growl id="message" />
+
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
+		<ui:insert name="footerAdmin">
+			<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/footerAdmin.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</html>
+

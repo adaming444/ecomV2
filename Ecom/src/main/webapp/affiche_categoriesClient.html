@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Affichage des catégories</title>
+
+</h:head>
+
+<h:body style="background-image: url('resources/images/confetti.gif')">
+
+	<div>
+
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+		<ui:insert name="headerClient">
+			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/headerClient.xhtml"></ui:include>
+		</ui:insert>
+
+	</div>
+	<h:form id="form">
+		<p:dataGrid var="cat" value="#{sessionScope.categorieListe}"
+			columns="3" layout="grid" rows="12" paginator="true" id="cars"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="6,12,16">
+
+			<f:facet name="header">
+            			Catégories
+       				</f:facet>
+
+			<p:panel header="#{cat.nomCategorie}" style="text-align:center">
+				<h:panelGrid columns="1" style="width:100%">
+					<h:graphicImage value="#{cat.image}" width="60 px" height="60 px" />
+
+					<p:commandLink update=":form:catDetail"
+						oncomplete="PF('catDialog').show()" title="View Detail">
+						<h:outputText styleClass="ui-icon ui-icon-search"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener value="#{cat}"
+							target="#{catMB.selectedCat}" />
+					</p:commandLink>
+				</h:panelGrid>
+			</p:panel>
+
+		</p:dataGrid>
+
+		<p:dialog header="Informations de la catégories" widgetVar="catDialog"
+			modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="catDetail" style="text-align:center;">
+				<p:panelGrid columns="2" rendered="#{not empty catMB.selectedCat}"
+					columnClasses="label,value">
+					<f:facet name="header">
+						<h:graphicImage value="#{catMB.selectedCat.image}" width="60 px"
+							height="60 px" />
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{catMB.selectedCat.idCategorie}" />
+
+					<h:outputText value="Nom de la catégorie" />
+					<h:outputText value="#{catMB.selectedCat.nomCategorie}" />
+
+					<h:outputText value="Description de la catégorie" />
+					<h:outputText value="#{catMB.selectedCat.description}" />
+
+				</p:panelGrid>
+			</p:outputPanel>
+
+		</p:dialog>
+	</h:form>
+
+	<p:growl id="message" />
+
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
+		<ui:insert name="footerClient">
+			<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/footerClient.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+
+</html>

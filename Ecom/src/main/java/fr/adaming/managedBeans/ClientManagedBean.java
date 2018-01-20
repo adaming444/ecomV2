@@ -82,10 +82,10 @@ public class ClientManagedBean implements Serializable {
 			this.listeClients = clientService.getAllClients();
 			// mettre ajour la liste dans la session
 			maSession.setAttribute("clientsList", this.listeClients);
-			return "accueilAdmin";
+			return "fin_commande";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de l'ajout."));
-			return "ajout_client";
+			return "valider_commande";
 		}
 	}
 
@@ -134,6 +134,10 @@ public class ClientManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue du chargement de la liste."));
 		}
 		return "affiche_clients";
+	}
+	
+	public String redirectAccueil() {
+		return "accueilClient";
 	}
 	
 }

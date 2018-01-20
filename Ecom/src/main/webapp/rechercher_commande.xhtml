@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+
+	<title>Page recherche commande</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/templateAdmin.xhtml">
+
+		<ui:define name="corps">
+
+			<h:form>
+			
+				<h:panelGrid columns="2">
+	
+					Id Commande : <h:inputText value="#{comMB.commande.idCommande}" />
+
+					<p:commandButton value="Rechercher"
+						action="#{comMB.getCommandeById}" update="idTable message" />
+
+				</h:panelGrid>
+
+			</h:form>
+
+			<p:dataTable id="idTable" var="com" value="#{comMB.commande}">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{comMB.commande.idCommande}" />
+				</p:column>
+
+				<p:column headerText="Date de commande (aaaa-MM-jj)">
+					<h:outputText value="#{comMB.commande.dateCommande}" />
+				</p:column>
+
+				<p:column headerText="Date de commande (aaaa-MM-jj)">
+					<h:outputText value="#{comMB.commande.dateCommande}" />
+				</p:column>
+
+			</p:dataTable>
+
+			<p:growl id="message" />
+
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+</html>

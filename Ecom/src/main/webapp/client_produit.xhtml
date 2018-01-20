@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Page liste produit</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/templateAdmin.xhtml">
+
+		<ui:define name="corps">
+
+			<p:dataTable id="idTable" var="pdt" value="#{pMb}">
+
+				<p:column headerText="Photo">
+					<h:graphicImage value="#{pdt.produit.image}" width="100 px" height="100 px" />
+				</p:column>
+
+				<p:column headerText="Désignation du produit">
+					<h:outputText value="#{pdt.produit.designation}" />
+				</p:column>
+
+				<p:column headerText="Description">
+					<h:outputText value="#{pdt.produit.description}" />
+				</p:column>
+
+				<p:column headerText="Prix">
+					<h:outputText value="#{pdt.produit.prix}" />
+				</p:column>
+
+				<p:column headerText="Stock">
+					<h:outputText value="#{pdt.produit.quantite}" />
+				</p:column>
+				
+				<p:column headerText="Quantité">
+					<h:inputText value="#{panMB.ligneCommande.quantite}" />
+				</p:column>
+
+				<p:column headerText="operation">
+					<p:commandLink value="Ajouter" action="#{panMB.addLigneCommande}"
+						update="@all">
+						<f:setPropertyActionListener value="#{pdt.produit.idProduit}"
+							target="#{panMB.produit.idProduit}" />
+					</p:commandLink>
+				</p:column>
+
+			</p:dataTable>
+
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+
+</html>

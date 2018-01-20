@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Page affichage des clients</title>
+
+</h:head>
+
+<h:body style="background-image: url('resources/images/confetti.gif')">
+
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+		<ui:insert name="headerAdmin">
+			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/headerAdmin.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+	<p:dataTable id="idTable" var="cl" value="#{sessionScope.clientsList}">
+		<p:column headerText="Id Client">
+			<h:outputText value="#{cl.idClient}" />
+		</p:column>
+
+		<p:column headerText="Nom du client">
+			<h:outputText value="#{cl.nomClient}" />
+		</p:column>
+
+		<p:column headerText="Adresse">
+			<h:outputText value="#{cl.adresse}" />
+		</p:column>
+
+		<p:column headerText="E-mail">
+			<h:outputText value="#{cl.email}" />
+		</p:column>
+
+		<p:column headerText="Téléphone">
+			<h:outputText value="#{cl.tel}" />
+		</p:column>
+
+	</p:dataTable>
+
+	<p:growl id="message" />
+
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
+		<ui:insert name="footerAdmin">
+			<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/footerAdmin.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+
+</html>
