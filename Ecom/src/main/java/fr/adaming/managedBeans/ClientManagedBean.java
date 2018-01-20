@@ -137,7 +137,7 @@ public class ClientManagedBean implements Serializable {
 	}
 	
 	public String redirectAccueil() {
-		return "accueilClient";
+		return "accueil_client";
 	}
 	
 }

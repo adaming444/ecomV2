@@ -152,7 +152,7 @@ public class ProduitManagedBean implements Serializable {
 			maSession.setAttribute("produitList", this.listProduits);
 
 			// pService.confirmAddProd(p1);
-			return "accueilAdmin";
+			return "accueil_admin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Une erreur est survenue lors de l'ajout."));
@@ -200,7 +200,7 @@ public class ProduitManagedBean implements Serializable {
 		List<Produit> listeP = pService.getAllProduit();
 		// Mettre a jour la liste des voitures dans la session
 		maSession.setAttribute("produitList", listeP);
-		return "accueilAdmin";
+		return "accueil_admin";
 	}
 
 	public String getAllProduits() {
