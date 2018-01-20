@@ -34,6 +34,14 @@ public class Commande implements Serializable{
 	@JoinColumn(referencedColumnName="idClient")
 	private Client client;
 
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 	public Long getIdCommande() {
 		return idCommande;
 	}
