@@ -37,7 +37,7 @@
 					Photo :	<p:fileUpload mode="advanced" auto="true"
 				fileUploadListener="#{pMb.upload}" update="idImage" />
 
-			<h:graphicImage id="idImage" value="#{pMb.image}" />
+			<h:graphicImage id="idImage" value="#{pMb.image}" width="60 px" height="60 px" />
 			<h:commandButton value="Ajouter" action="#{pMb.addProduit}" />
 
 		</h:panelGrid>

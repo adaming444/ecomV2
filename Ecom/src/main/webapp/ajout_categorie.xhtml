@@ -34,7 +34,7 @@
  					Photo :	<p:fileUpload mode="advanced" auto="true"
 				fileUploadListener="#{catMB.upload}" update="idImage" />
 
-			<h:graphicImage id="idImage" value="#{catMB.image}" />
+			<h:graphicImage id="idImage" value="#{catMB.image}" width="60 px" height="60 px" />
 
 			<h:commandButton value="ajouter" action="#{catMB.addCategorie}" />
 
