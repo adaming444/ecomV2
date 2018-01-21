@@ -44,6 +44,7 @@ public class ProduitManagedBean implements Serializable {
 	private Produit selectedPdt;
 	private String image;
 	private Categorie categorie;
+	private long idCategorie;
 
 	public ProduitManagedBean() {
 		// Instancier un produit
@@ -141,9 +142,7 @@ public class ProduitManagedBean implements Serializable {
 	
 	public String addProduit() throws Exception {
 		// //Appel de la methode service
-		System.out.println(this.produit);
 		Produit p1 = pService.addProduit(this.produit);
-		System.out.println(this.produit);
 		// System.out.println("------------------- " +
 		// this.produit.getIdProduit());
 		if (this.produit.getIdProduit() != 0) {
@@ -169,7 +168,6 @@ public class ProduitManagedBean implements Serializable {
 	}
 
 	public String updateProduit() {
-		System.out.println();
 		Produit pModif = pService.updateProduit(this.produit);
 		if (pModif != null) {
 			// Recuperer la nouvelle liste de la bd

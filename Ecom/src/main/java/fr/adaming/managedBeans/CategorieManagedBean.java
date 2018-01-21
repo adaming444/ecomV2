@@ -18,6 +18,7 @@ import org.primefaces.model.UploadedFile;
 
 import fr.adaming.model.Admin;
 import fr.adaming.model.Categorie;
+import fr.adaming.model.Produit;
 import fr.adaming.service.ICategorieService;
 
 @ManagedBean(name = "catMB")
@@ -50,8 +51,10 @@ public class CategorieManagedBean implements Serializable {
 	// methode qui s'execute apres l'instanciation du ManagedBean
 	@PostConstruct
 	public void init() {
+		this.listeCategorie = new ArrayList<Categorie>();
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		this.admin = (Admin) maSession.getAttribute("adminSession");
+		this.categorie=new Categorie();
 	}
 
 	// Getters et setters
@@ -107,9 +110,17 @@ public class CategorieManagedBean implements Serializable {
 		this.selectedCat = selectedCat;
 	}
 
+	public HttpSession getMaSession() {
+		return maSession;
+	}
+
+	public void setMaSession(HttpSession maSession) {
+		this.maSession = maSession;
+	}
+
 	// methodes metier
 	public String addCategorie() {
-
+		
 		this.categorie = categorieService.addCategorie(this.categorie);
 		// this.image=null;
 		// this.file=null;
@@ -119,7 +130,7 @@ public class CategorieManagedBean implements Serializable {
 
 			maSession.setAttribute("categorieListe", this.listeCategorie);
 
-			return "accueilAdmin";
+			return "accueil_admin";
 		} else {
 			return "ajout_categorie";
 		}
@@ -140,7 +151,7 @@ public class CategorieManagedBean implements Serializable {
 
 			maSession.setAttribute("categorieListe", this.listeCategorie);
 
-			return "accueilAdmin";
+			return "accueil_admin";
 		} else {
 			return "suppr_categorie";
 		}
@@ -160,7 +171,7 @@ public class CategorieManagedBean implements Serializable {
 
 			maSession.setAttribute("categorieListe", this.listeCategorie);
 
-			return "accueilAdmin";
+			return "accueil_admin";
 		} else {
 			return "modif_categorie";
 		}
