@@ -32,6 +32,7 @@ public class Produit implements Serializable {
 	private byte[] photo;
 	@Transient
 	private String image;
+	
 
 	// Transformation de l'UML en java avec catégorie
 	@ManyToOne
@@ -142,9 +143,11 @@ public class Produit implements Serializable {
 		this.image = image;
 	}
 	
+	
 
 	// Déclaration du ToString
 
+	
 	public String toString() {
 		return "Produit [idProduit=" + idProduit + ", designation=" + designation + ", description=" + description
 				+ ", prix=" + prix + ", quantite=" + quantite + ", photo=" + Arrays.toString(photo) + "]";
