@@ -22,19 +22,32 @@
 		</ui:insert>
 	</div>
 
-	<h:form>
-		<h:panelGrid columns="2">
+	<div id="corps" style="padding: 40px 0">
+
+		<div
+			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
+
+			<center>
+
+
+				<h:form>
+					<h:panelGrid columns="2">
 		
 				Id:<p:inputText value="#{clMB.client.idClient}" />
 
-			<p:commandButton value="Rechercher via Id"
-				action="#{clMB.getClientById}" icon="ui-icon-disk" update="@all" />
+					</h:panelGrid>
 
-			<p:commandButton value="Rechercher via le Nom"
-				action="#{pMb.getProduitbyName}" icon="ui-icon-disk" update="@all" />
+					<h:commandButton value="Rechercher via Id"
+						action="#{clMB.getClientById}" icon="ui-icon-disk" update="@all" />
 
-		</h:panelGrid>
-	</h:form>
+				</h:form>
+
+			</center>
+
+		</div>
+
+	</div>
+
 
 	<p:dataTable id="idTable" var="cl" value="#{clMB.client}">
 

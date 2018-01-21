@@ -22,18 +22,32 @@
 		</ui:insert>
 	</div>
 
-	<h:form>
+	<div id="corps" style="padding: 40px 0">
 
-		<h:panelGrid columns="2">
+		<div
+			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
+
+			<center>
+
+				<h:form>
+
+					<h:panelGrid columns="2">
 		
 					Id du Client : <h:inputText value="#{clMB.client.idClient}" />
 
-			<p:commandButton value="Supprimer" action="#{clMB.deleteClient}"
-				update="@all" />
+					</h:panelGrid>
 
-		</h:panelGrid>
+					<h:commandButton value="Supprimer" action="#{clMB.deleteClient}"
+						update="@all" />
 
-	</h:form>
+
+				</h:form>
+
+			</center>
+
+		</div>
+
+	</div>
 
 	<p:growl id="message" />
 

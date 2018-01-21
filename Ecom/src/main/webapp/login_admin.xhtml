@@ -20,43 +20,47 @@
 		<ui:include src="/template/headerClient.xhtml"></ui:include>
 	</ui:insert>
 
+	<div id="corps" style="padding: 150px 0">
 
-
-	<div
-		style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
-
-		<center><h:outputText style="color:green; font-size:20px;display:block"
-			value="Veuillez vous authentifier"/></center>
-
-		<br />
-
-		<h:form style="text-align: center">
+		<div
+			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
 
 			<center>
-				<h:panelGrid columns="2">
-
-					<h:outputText style="color:black" value="Mail : " />
-
-					<h:inputText value="#{aMb.admin.mail}" />
-
-					<h:outputText style="color:black" value="Password : " />
-
-					<h:inputText value="#{aMb.admin.mdp}" />
-
-					<center>
-						<h:commandButton value="Se connecter" action="#{aMb.seConnecter}"
-							update="@all" />
-					</center>
-
-				</h:panelGrid>
+				<h:outputText style="color:green; font-size:20px;display:block"
+					value="Veuillez vous authentifier" />
 			</center>
 
-		</h:form>
+			<br />
 
-		<p:growl id="message" />
-		
+			<h:form style="text-align: center">
+
+				<center>
+					<h:panelGrid columns="2">
+
+						<h:outputText style="color:black" value="Mail : " />
+
+						<h:inputText value="#{aMb.admin.mail}" />
+
+						<h:outputText style="color:black" value="Password : " />
+
+						<h:inputText value="#{aMb.admin.mdp}" />
+
+						<center>
+							<h:commandButton value="Se connecter" action="#{aMb.seConnecter}"
+								update="@all" />
+						</center>
+
+					</h:panelGrid>
+				</center>
+
+			</h:form>
+
+			<p:growl id="message" />
+
+		</div>
+
 	</div>
-
+	
 	<div>
 		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
 		<ui:insert name="footerClient">

@@ -22,9 +22,16 @@
 		</ui:insert>
 	</div>
 
-	<h:form enctype="multipart/form-data">
+	<div id="corps" style="padding: 40px 0">
 
-		<h:panelGrid columns="2">
+		<div
+			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
+
+			<center>
+
+				<h:form enctype="multipart/form-data">
+
+					<h:panelGrid columns="2">
 		
 					Id du produit : <h:inputText value="#{pMb.produit.idProduit}" />
 		
@@ -37,15 +44,21 @@
 					Quantité : <h:inputText value="#{pMb.produit.quantite}" />
 		
 					Photo :	<p:fileUpload mode="advanced" auto="true"
-				fileUploadListener="#{pMb.upload}" update="idImage" />
+							fileUploadListener="#{pMb.upload}" update="idImage" />
 
-			<h:graphicImage id="idImage" value="#{pMb.image}" />
+						<h:graphicImage id="idImage" value="#{pMb.image}" />
 
-			<p:commandButton value="modifier" action="#{pMb.updateProduit}" />
+						<p:commandButton value="modifier" action="#{pMb.updateProduit}" />
 
-		</h:panelGrid>
+					</h:panelGrid>
 
-	</h:form>
+				</h:form>
+
+			</center>
+
+		</div>
+
+	</div>
 
 	<p:growl id="message" />
 

@@ -5,53 +5,77 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 <h:head>
 
 	<title>Page recherche commande</title>
 
 </h:head>
 
-<h:body>
+<h:body style="background-image: url('resources/images/confetti.gif')">
 
-	<ui:composition template="/template/templateAdmin.xhtml">
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+		<ui:insert name="headerAdmin">
+			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/headerAdmin.xhtml"></ui:include>
+		</ui:insert>
+	</div>
 
-		<ui:define name="corps">
+	<div id="corps" style="padding: 40px 0">
 
-			<h:form>
-			
-				<h:panelGrid columns="2">
+		<div
+			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
+
+			<center>
+
+				<h:form>
+
+					<h:panelGrid columns="2">
 	
 					Id Commande : <h:inputText value="#{comMB.commande.idCommande}" />
 
-					<p:commandButton value="Rechercher"
+					</h:panelGrid>
+
+					<h:commandButton value="Rechercher"
 						action="#{comMB.getCommandeById}" update="idTable message" />
 
-				</h:panelGrid>
 
-			</h:form>
+				</h:form>
 
-			<p:dataTable id="idTable" var="com" value="#{comMB.commande}">
+			</center>
 
-				<p:column headerText="Id">
-					<h:outputText value="#{comMB.commande.idCommande}" />
-				</p:column>
+		</div>
 
-				<p:column headerText="Date de commande (aaaa-MM-jj)">
-					<h:outputText value="#{comMB.commande.dateCommande}" />
-				</p:column>
+	</div>
 
-				<p:column headerText="Date de commande (aaaa-MM-jj)">
-					<h:outputText value="#{comMB.commande.dateCommande}" />
-				</p:column>
+	<p:dataTable id="idTable" var="com" value="#{comMB.commande}">
 
-			</p:dataTable>
+		<p:column headerText="Id">
+			<h:outputText value="#{comMB.commande.idCommande}" />
+		</p:column>
 
-			<p:growl id="message" />
+		<p:column headerText="Date de commande (aaaa-MM-jj)">
+			<h:outputText value="#{comMB.commande.dateCommande}" />
+		</p:column>
 
-		</ui:define>
+		<p:column headerText="Date de commande (aaaa-MM-jj)">
+			<h:outputText value="#{comMB.commande.dateCommande}" />
+		</p:column>
 
-	</ui:composition>
+	</p:dataTable>
+
+
+
+	<p:growl id="message" />
+
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
+		<ui:insert name="footerAdmin">
+			<!--  spécifier le ficheier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/footerAdmin.xhtml"></ui:include>
+		</ui:insert>
+	</div>
 
 </h:body>
 
