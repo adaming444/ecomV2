@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -18,11 +18,10 @@ import org.primefaces.model.UploadedFile;
 
 import fr.adaming.model.Admin;
 import fr.adaming.model.Categorie;
-import fr.adaming.model.Produit;
 import fr.adaming.service.ICategorieService;
 
 @ManagedBean(name = "catMB")
-@RequestScoped
+@ViewScoped
 public class CategorieManagedBean implements Serializable {
 
 	@ManagedProperty(value = "#{catService}")
