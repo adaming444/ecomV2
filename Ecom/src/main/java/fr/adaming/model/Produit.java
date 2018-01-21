@@ -150,7 +150,7 @@ public class Produit implements Serializable {
 	
 	public String toString() {
 		return "Produit [idProduit=" + idProduit + ", designation=" + designation + ", description=" + description
-				+ ", prix=" + prix + ", quantite=" + quantite + ", photo=" + Arrays.toString(photo) + "]";
+				+ ", prix=" + prix + ", quantite=" + quantite + "]";
 	}
 
 }

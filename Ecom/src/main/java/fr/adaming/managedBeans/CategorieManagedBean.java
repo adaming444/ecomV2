@@ -27,7 +27,7 @@ public class CategorieManagedBean implements Serializable {
 	@ManagedProperty(value = "#{catService}")
 	private ICategorieService categorieService;
 
-	private Categorie categorie; 
+	private Categorie categorie;
 
 	private List<Categorie> listeCategorie;
 
@@ -53,7 +53,7 @@ public class CategorieManagedBean implements Serializable {
 		this.listeCategorie = new ArrayList<Categorie>();
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		this.admin = (Admin) maSession.getAttribute("adminSession");
-		this.categorie=new Categorie();
+		this.categorie = new Categorie();
 	}
 
 	// Getters et setters
@@ -119,7 +119,7 @@ public class CategorieManagedBean implements Serializable {
 
 	// methodes metier
 	public String addCategorie() {
-		
+
 		this.categorie = categorieService.addCategorie(this.categorie);
 		// this.image=null;
 		// this.file=null;
@@ -205,25 +205,25 @@ public class CategorieManagedBean implements Serializable {
 					new FacesMessage("Une erreur est survenue lors du chargement de la liste."));
 		}
 		return "affiche_categories";
-		
-	}
-		
-		public String recupAllCategorieClient() {
-			this.listeCategorie = categorieService.getAllCategorie();
 
-			if (listeCategorie.size() > 0) {
-				List<Categorie> listeTemp = new ArrayList<>();
-				for (Categorie categ : listeCategorie) {
-					categ.setImage("data:image/png;base64," + Base64.encodeBase64String(categ.getPhoto()));
-					listeTemp.add(categ);
-				}
-				this.setListeCategorie(listeTemp);
-				maSession.setAttribute("categorieListe", this.listeCategorie);
-			} else {
-				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage("Une erreur est survenue lors du chargement de la liste."));
+	}
+
+	public String recupAllCategorieClient() {
+		this.listeCategorie = categorieService.getAllCategorie();
+
+		if (listeCategorie.size() > 0) {
+			List<Categorie> listeTemp = new ArrayList<>();
+			for (Categorie categ : listeCategorie) {
+				categ.setImage("data:image/png;base64," + Base64.encodeBase64String(categ.getPhoto()));
+				listeTemp.add(categ);
 			}
-			return "affiche_categoriesClient";
+			this.setListeCategorie(listeTemp);
+			maSession.setAttribute("categorieListe", this.listeCategorie);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Une erreur est survenue lors du chargement de la liste."));
+		}
+		return "affiche_categoriesClient";
 	}
 
 }

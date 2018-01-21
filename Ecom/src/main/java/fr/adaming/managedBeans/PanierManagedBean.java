@@ -6,16 +6,21 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.binary.Base64;
+
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
+import fr.adaming.service.ICategorieService;
 import fr.adaming.service.ICommandeService;
 import fr.adaming.service.ILigneCommandeService;
 import fr.adaming.service.IProduitService;
@@ -30,14 +35,20 @@ public class PanierManagedBean implements Serializable {
 	private Produit produit;
 	private Commande commande;
 
-	@ManagedProperty(value = "ligneService")
+	private List<Categorie> listeCategorie;
+
+	
+	@ManagedProperty(value = "#{ligneService}")
 	private ILigneCommandeService ligneCommandeService;
 
-	@ManagedProperty(value = "pService")
+	@ManagedProperty(value = "#{pService}")
 	private IProduitService produitService;
 
-	@ManagedProperty(value = "commandeService")
+	@ManagedProperty(value = "#{commandeService}")
 	private ICommandeService commandeService;
+	
+	@ManagedProperty(value = "#{catService}")
+	private ICategorieService categorieService;
 
 	private HttpSession maSession;
 
@@ -99,6 +110,18 @@ public class PanierManagedBean implements Serializable {
 
 	public void setCommandeService(ICommandeService commandeService) {
 		this.commandeService = commandeService;
+	}
+
+	public List<Categorie> getListeCategorie() {
+		return listeCategorie;
+	}
+
+	public void setListeCategorie(List<Categorie> listeCategorie) {
+		this.listeCategorie = listeCategorie;
+	}
+
+	public void setCategorieService(ICategorieService categorieService) {
+		this.categorieService = categorieService;
 	}
 
 	// Methodes metier
@@ -206,5 +229,24 @@ public class PanierManagedBean implements Serializable {
 		this.panier = new Panier();
 		return "valider_commande";
 	}
+	
+	public String recupAllCategorieClient() {
+		this.listeCategorie = categorieService.getAllCategorie();
+
+		if (listeCategorie.size() > 0) {
+			List<Categorie> listeTemp = new ArrayList<>();
+			for (Categorie categ : listeCategorie) {
+				categ.setImage("data:image/png;base64," + Base64.encodeBase64String(categ.getPhoto()));
+				listeTemp.add(categ);
+			}
+			this.setListeCategorie(listeTemp);
+			maSession.setAttribute("categorieListe", this.listeCategorie);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Une erreur est survenue lors du chargement de la liste."));
+		}
+		return "affiche_categoriesClient";
+	}
+	
 
 }

@@ -122,8 +122,7 @@ public class Categorie implements Serializable {
 	// methode tooString
 	@Override
 	public String toString() {
-		return "Categorie [idCategorie=" + idCategorie + ", nomCategorie=" + nomCategorie + ", photo="
-				+ Arrays.toString(photo) + ", description=" + description + "]";
+		return "Categorie [idCategorie=" + idCategorie + ", nomCategorie=" + nomCategorie + ", description=" + description + "]";
 	}
 	
 	

@@ -223,7 +223,9 @@ public class ProduitManagedBean implements Serializable {
 	}
 
 	public String getProduitsByCategorie() {
+		
 		this.listProduits = pService.getAllProduitsByCategorie(this.categorie);
+		
 		if (listProduits.size() > 0) {
 
 			List<Produit> listeCateg = new ArrayList<Produit>();
@@ -232,7 +234,7 @@ public class ProduitManagedBean implements Serializable {
 				listeCateg.add(prod);
 			}
 			this.setListProduitsParCateg(listeCateg);
-
+			
 			maSession.setAttribute("produitCategList", this.listProduitsParCateg);
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,

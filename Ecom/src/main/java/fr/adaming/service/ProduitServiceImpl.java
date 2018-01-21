@@ -44,7 +44,6 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public int deleteProduitByName(String name) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -55,12 +54,12 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public Produit getProduitbyName(String designation) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Produit> getAllProduitsByCategorie(Categorie c) {
+		
 		return produitDao.getAllProduitsByCategorie(c);
 	}
 	
