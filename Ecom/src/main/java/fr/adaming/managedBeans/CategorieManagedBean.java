@@ -205,6 +205,25 @@ public class CategorieManagedBean implements Serializable {
 					new FacesMessage("Une erreur est survenue lors du chargement de la liste."));
 		}
 		return "affiche_categories";
+		
+	}
+		
+		public String recupAllCategorieClient() {
+			this.listeCategorie = categorieService.getAllCategorie();
+
+			if (listeCategorie.size() > 0) {
+				List<Categorie> listeTemp = new ArrayList<>();
+				for (Categorie categ : listeCategorie) {
+					categ.setImage("data:image/png;base64," + Base64.encodeBase64String(categ.getPhoto()));
+					listeTemp.add(categ);
+				}
+				this.setListeCategorie(listeTemp);
+				maSession.setAttribute("categorieListe", this.listeCategorie);
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage("Une erreur est survenue lors du chargement de la liste."));
+			}
+			return "affiche_categoriesClient";
 	}
 
 }
