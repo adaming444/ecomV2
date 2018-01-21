@@ -80,7 +80,6 @@ public class Client implements Serializable {
 
 	public Client() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Client(String nomClient, String adresse, String email, String tel) {

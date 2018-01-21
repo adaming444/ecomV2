@@ -22,6 +22,8 @@ public class AdminDaoImpl implements IAdminDao {
 	@Override
 	public Admin isExist(Admin a) {
 		
+		System.out.println("Entrée Dao ==============" + a);
+		
 		// ouverture de la session (récupère session existente ou en ouvre une
 		// si n'existe pas)
 		Session s = sf.getCurrentSession();
@@ -37,6 +39,9 @@ public class AdminDaoImpl implements IAdminDao {
 		query.setParameter("pMdp", a.getMdp());
 
 		Admin aOut = (Admin) query.uniqueResult();
+		
+		System.out.println("Sortie Dao ==============" + aOut);
+
 		return aOut;
 	}
 

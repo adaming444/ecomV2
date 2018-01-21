@@ -20,7 +20,7 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public Admin isExist(Admin a) {
-		
+		System.out.println("Service entrée =============== " + a);
 		return adminDao.isExist(a);
 	}
 	

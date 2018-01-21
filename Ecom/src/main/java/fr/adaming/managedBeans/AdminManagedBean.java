@@ -52,7 +52,12 @@ public class AdminManagedBean implements Serializable {
 	}
 	
 	public String seConnecter() {
+		
+		System.out.println("Managed Bean entrée ================" + this.admin);
+		
 		this.admin = adminService.isExist(this.admin);
+		
+		System.out.println("Managed Bean sortie ================" + this.admin);
 
 		if (this.admin != null) {
 			

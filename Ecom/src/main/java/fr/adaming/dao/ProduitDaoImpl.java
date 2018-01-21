@@ -85,13 +85,11 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public int deleteProduitByName(String name) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public Produit getProduitbyId(int id) {
-		// TODO Auto-generated method stub// ouverture de la session
 		Session s = sf.getCurrentSession();
 
 		// écriture de la requete HQL
@@ -109,7 +107,6 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public Produit getProduitbyName(String designation) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
