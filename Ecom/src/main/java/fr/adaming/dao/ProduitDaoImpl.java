@@ -124,7 +124,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		// assignation des paramètres
 
 		List<Produit> listProduitsCat = query.list();
-
+		
 		return listProduitsCat;
 	}
 
