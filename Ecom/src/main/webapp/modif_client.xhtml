@@ -14,20 +14,22 @@
 
 <h:body style="background-image: url('resources/images/confetti.gif')">
 
+
+
+	<div>
+		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
+		<ui:insert name="headerAdmin">
+			<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
+			<ui:include src="/template/headerAdmin.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
 	<div id="corps" style="padding: 40px 0">
 
 		<div
-			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
+			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 35%; border: 3px solid green; padding: 10px border: 3px solid green">
 
 			<center>
-
-				<div>
-					<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
-					<ui:insert name="headerAdmin">
-						<!--  spécifier le fichier que je veux inserer avec la balise ui:include -->
-						<ui:include src="/template/headerAdmin.xhtml"></ui:include>
-					</ui:insert>
-				</div>
 
 				<h:form>
 
@@ -47,9 +49,9 @@
 		
 					Adresse : <h:inputText value="#{clMB.client.adresse}" />
 
-						<p:commandButton value="Modifier" action="#{clMB.updateClient}" />
-
 					</p:panelGrid>
+
+					<h:commandButton value="Modifier" action="#{clMB.updateClient}" />
 
 				</h:form>
 
