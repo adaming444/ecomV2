@@ -22,16 +22,9 @@
 		</ui:insert>
 	</div>
 
-	<div id="corps" style="padding: 40px 0">
+<h:form enctype="multipart/form-data">
 
-		<div
-			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
-
-			<center>
-
-				<h:form enctype="multipart/form-data">
-
-					<h:panelGrid columns="2">
+		<h:panelGrid columns="2">
 		
 					Designation : <h:inputText value="#{pMb.produit.designation}" />
 					
@@ -42,25 +35,19 @@
 					Quantité en stock : <h:inputText value="#{pMb.produit.quantite}" />
 					
 					Photo :	<p:fileUpload mode="advanced" auto="true"
-							fileUploadListener="#{pMb.upload}" update="idImage" />
+				fileUploadListener="#{pMb.upload}" update="idImage" />
 
-						<h:graphicImage id="idImage" value="#{pMb.image}" />
-						<h:commandButton value="Ajouter" action="#{pMb.addProduit}" />
+			<h:graphicImage id="idImage" value="#{pMb.image}" width="60 px" height="60 px" />
+			<h:commandButton value="Ajouter" action="#{pMb.addProduit}" />
 
-					</h:panelGrid>
+		</h:panelGrid>
 
-				</h:form>
+	</h:form>
 
-				<h:form>
-					<p:commandButton value="Generer la liste de produit"
-						action="#{pMb.createPdf}" />
-				</h:form>
-
-			</center>
-
-		</div>
-
-	</div>
+	<h:form>
+		<p:commandButton value="Generer la liste de produit"
+			action="#{pMb.createPdf}" />
+	</h:form>
 
 	<p:growl id="message" />
 

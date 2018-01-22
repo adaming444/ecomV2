@@ -22,40 +22,27 @@
 		</ui:insert>
 	</div>
 
-	<div id="corps" style="padding: 40px 0">
+	<h:form enctype="multipart/form-data">
 
-		<div
-			style="background-color: rgb(255, 255, 255); opacity: 0.9; filter: alpha(opacity = 100); margin: auto; width: 30%; border: 3px solid green; padding: 10px border: 3px solid green">
-
-			<center>
-
-				<h:form enctype="multipart/form-data">
-
-					<h:panelGrid columns="2">
+		<h:panelGrid columns="2">
 		
 					Nom de la Categorie : <h:inputText
-							value="#{catMB.categorie.nomCategorie}" />
+				value="#{catMB.categorie.nomCategorie}" />
 			
 					Description : <h:inputText value="#{catMB.categorie.description}" />
 		
  					Photo :	<p:fileUpload mode="advanced" auto="true"
-							fileUploadListener="#{catMB.upload}" update="idImage" />
+				fileUploadListener="#{catMB.upload}" update="idImage" />
 
-						<h:graphicImage id="idImage" value="#{catMB.image}" />
+			<h:graphicImage id="idImage" value="#{catMB.image}" width="60 px" height="60 px" />
 
-						<h:commandButton value="Ajouter" action="#{catMB.addCategorie}" />
+			<h:commandButton value="ajouter" action="#{catMB.addCategorie}" />
 
-					</h:panelGrid>
+		</h:panelGrid>
 
-				</h:form>
+	</h:form>
 
-				<p:growl id="message" />
-
-			</center>
-
-		</div>
-
-	</div>
+	<p:growl id="message" />
 
 	<div>
 		<!-- spécifier l'endroit ou je veux inserer mon header avec la baseli ui:insert -->
