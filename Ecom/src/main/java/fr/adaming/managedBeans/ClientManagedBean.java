@@ -75,13 +75,14 @@ public class ClientManagedBean implements Serializable {
 		this.maSession = maSession;
 	}
 
-	public String addClient() {
+	public String addClient() throws Exception {
 		this.client = clientService.addClient(this.client);
 		if (this.client.getIdClient() != 0) {
 			// reucp de la nouvelle liste de la bd
 			this.listeClients = clientService.getAllClients();
 			// mettre ajour la liste dans la session
 			maSession.setAttribute("clientsList", this.listeClients);
+			clientService.confirmAddClient(this.client);
 			return "fin_commande";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur est survenue lors de l'ajout."));

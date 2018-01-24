@@ -3,6 +3,7 @@ package fr.adaming.service;
 import java.util.List;
 
 import fr.adaming.model.Client;
+import fr.adaming.model.Produit;
 
 public interface IClientService {
 
@@ -15,5 +16,7 @@ public interface IClientService {
 	public int deleteClient(Long id);
 
 	public Client getClientById(Long id);
+	
+	public void confirmAddClient(Client c) throws Exception;
 
 }
