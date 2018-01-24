@@ -23,5 +23,7 @@ public interface IProduitService {
 	public Produit getProduitbyName(String designation);
 	
 	public List<Produit> getAllProduitsByCategorie(Categorie c);
+	
+	public void confirmAddProd(Produit p) throws Exception;
 
 }

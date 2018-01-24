@@ -150,6 +150,7 @@ public class ProduitManagedBean implements Serializable {
 			this.listProduits = pService.getAllProduit();
 			// Mettre a jour la liste des produits dans la session
 			maSession.setAttribute("produitList", this.listProduits);
+			pService.confirmAddProd(p1);
 
 			// pService.confirmAddProd(p1);
 			return "accueil_admin";
