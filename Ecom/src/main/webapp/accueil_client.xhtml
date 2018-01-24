@@ -12,7 +12,7 @@
 </h:head>
 
 <h:body style="background-image: url('resources/images/confetti.gif')">
-<embed src="Bellini.mp3" autostart="true" loop="false" hidden="true"></embed>
+	<embed src="Bellini.mp3" autostart="true" loop="false" hidden="true"></embed>
 	<div>
 
 		<!-- spécifier l'endroit ou je veux inserer mon header avec la balise ui:insert -->
@@ -23,11 +23,19 @@
 
 	</div>
 
-
-
 	<div id="corps" style="padding: 70px 0">
 
 		<center>
+
+			<div>
+				<object type="application/x-shockwave-flash" width="400"
+					height="222" data="https://www.youtube.com/watch?v=2XK_qajq23s">
+					<param name="movie"
+						value="https://www.youtube.com/watch?v=2XK_qajq23s" />
+					<param name="wmode" value="transparent" />
+					Vous n'avez pas de navigateur moderne, ni Flash installé...
+				</object>
+			</div>
 
 			<h:outputText style="color:white; font-size:30px"
 				value="Bienvenue sur le site de supercarnaval ! Que souhaitez vous acheter aujourd'hui ?" />
