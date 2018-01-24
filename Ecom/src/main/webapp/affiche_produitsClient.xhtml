@@ -82,11 +82,11 @@
 				</p:panelGrid>
 			</p:outputPanel>
 
-			<p:commandLink value="Ajouter" action="#{panMB.addLigneCommande}"
+			<h:commandLink value="Ajouter" action="#{panMB.addLigneCommande}"
 				update="@all">
 				<f:setPropertyActionListener value="#{pdt.idProduit}"
 					target="#{panMB.produit.idProduit}" />
-			</p:commandLink>
+			</h:commandLink>
 
 		</p:dialog>
 	</h:form>
