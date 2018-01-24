@@ -40,11 +40,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/main/webapp/Carnaval.mp3</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Downloads/Carnaval.mp3</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
