@@ -1,7 +1,11 @@
 package fr.adaming.managedBeans;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -16,6 +20,17 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.binary.Base64;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
+
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import fr.adaming.model.Admin;
 import fr.adaming.model.Categorie;
@@ -243,5 +258,84 @@ public class ProduitManagedBean implements Serializable {
 		}
 		return "affiche_produitsClient";
 	}
+	public void createPdf() throws IOException {
 
+		Document document = new Document();
+		String chemin = "C:\\Users\\intiformation\\Desktop\\testlistProd.pdf";
+
+		try {
+			PdfWriter.getInstance(document, new FileOutputStream(chemin));
+			document.open();
+			addInfoPage(document);
+			document.add(tableauProduit());
+			// document.add(Paragraph1());
+			Paragraph preface = new Paragraph();
+			preface.setAlignment(Element.ALIGN_CENTER);
+			preface.add(" Ecom Carnaval");
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (DocumentException e) {
+
+			e.printStackTrace();
+		}
+		// Fermeture du document
+		document.close();
+
+	}
+
+	private static void addInfoPage(Document document) throws DocumentException, IOException {
+		Paragraph preface = new Paragraph();
+
+		Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 24, Font.BOLD, BaseColor.RED);
+		Font catFont2 = new Font(Font.FontFamily.TIMES_ROMAN, 20, Font.NORMAL, BaseColor.BLACK);
+		Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.NORMAL, BaseColor.RED);
+		Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.BOLD);
+		Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
+
+		addEmptyLine(preface, 1);
+
+		preface.add(new Paragraph("Ecom Carnaval", catFont));
+		preface.add(new Paragraph("Date : " + new Date(), smallBold));
+		preface.add(new Paragraph("Voici le récapitulatif des produits enregistrés :", catFont2));
+		addEmptyLine(preface, 1);
+
+		addEmptyLine(preface, 2);
+		document.add(preface);
+	}
+
+	public PdfPTable tableauProduit() {
+		List<Produit> prodtot = pService.getAllProduit();
+		// On créer un objet table dans lequel on intialise sa taille.
+		PdfPTable tableProd = new PdfPTable(3);
+
+		// On créer l'objet cellule.
+		PdfPCell cell;
+
+		cell = new PdfPCell(new Phrase("Information Liste Produit"));
+		cell.setColspan(3);
+		tableProd.addCell(cell);
+
+		// contenu du tableau.
+		for (Produit p : prodtot) {
+			// ajout colonne produit
+			cell = new PdfPCell(new Phrase("Produit " + p.getIdProduit()));
+			cell.setRowspan(2);
+			tableProd.addCell(cell);
+			// ajout colonne specifique au produit
+			tableProd.addCell("Designation " + p.getDesignation());
+			tableProd.addCell("Description " + p.getDescription());
+			tableProd.addCell("Prix " + p.getPrix());
+			tableProd.addCell("Quantité " + p.getQuantite());
+		}
+
+		return tableProd;
+
+	}
+
+	private static void addEmptyLine(Paragraph paragraph, int number) {
+		for (int i = 0; i < number; i++) {
+			paragraph.add(new Paragraph(" "));
+		}
+	}
 }
